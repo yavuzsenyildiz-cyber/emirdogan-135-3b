@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>135 Ada İstinat Metrajı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Yerleşim: solda tam boy 3B şantiye görünümü, sağda metraj defteri (telefonda alt alta) */
+:root {
+  --bg: #eef0ec; --panel: #ffffff; --fg: #1c211f; --muted: #5a645f; --line: #d6dbd5; --accent: #245b8c; --chip: #e4e8e2;
+  --scene: #dfe4dc;
+  --display: "Barlow Semi Condensed", "Arial Narrow", Arial, sans-serif;
+  --body: "Barlow", "Segoe UI", Arial, sans-serif;
+  --mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+  --h1: #2e8b57; --h2: #9acd32; --h3: #f2c200; --h4: #ff8c00; --h5: #c81e1e;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121514; --panel: #1a1e1c; --fg: #e5eae7; --muted: #9aa49f; --line: #2b322f; --accent: #7db0df; --chip: #232926; --scene: #1d2220; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121514; --panel: #1a1e1c; --fg: #e5eae7; --muted: #9aa49f; --line: #2b322f; --accent: #7db0df; --chip: #232926; --scene: #1d2220; color-scheme: dark }
+html, body { height: 100%; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.45; }
+.sayfa > * { min-width: 0; }
+.sayfa { padding-inline: 16px; padding-block: 14px 24px; display: grid; gap: 14px; max-width: 1500px; margin-inline: auto; }
+header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 24px; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 3.4vw, 34px); line-height: 1.05; margin: 0; letter-spacing: .2px; text-wrap: balance; }
+.alt { color: var(--muted); margin: 4px 0 0; font-size: 14px; }
+.ozet { display: flex; flex-wrap: wrap; gap: 8px; }
+.ozet div { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; min-width: 0; }
+.ozet b { display: block; font-family: var(--mono); font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.ozet span { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.ana { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 14px; align-items: start; }
+@media (max-width: 900px) { .ana { grid-template-columns: minmax(0, 1fr); } }
+.sahne { position: relative; height: min(76vh, 820px); min-height: 360px; border-radius: 8px; overflow: hidden; background: var(--scene); border: 1px solid var(--line); touch-action: none; }
+@media (max-width: 900px) { .sahne { height: 62svh; } }
+.sahne canvas { display: block; width: 100%; height: 100%; }
+.etiketler { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.et { position: absolute; transform: translate(-50%, -100%); white-space: nowrap; font-family: var(--display); font-weight: 600; font-size: 13px;
+  background: #ffffffee; color: #16191a; border-radius: 4px; padding: 2px 6px; border-bottom: 3px solid var(--c, #888); box-shadow: 0 1px 3px #0003; }
+.et small { font-family: var(--mono); font-weight: 400; font-size: 11px; color: #3b4240; margin-left: 4px; }
+.et.sec { outline: 2px solid var(--accent); z-index: 2; }
+.lejant { position: absolute; left: 10px; top: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; font-size: 12px; display: grid; gap: 3px; }
+.lejant b { font-family: var(--display); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.lejant i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -2px; margin-right: 6px; }
+.arac { position: absolute; left: 10px; right: 10px; bottom: 10px; display: flex; flex-wrap: wrap; gap: 6px; pointer-events: none; }
+.grup { display: flex; align-items: center; gap: 2px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 3px; pointer-events: auto; }
+.grup span { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); padding: 0 6px; }
+.grup button { font: 600 13px var(--display); border: 0; border-radius: 4px; padding: 5px 9px; background: transparent; color: var(--fg); cursor: pointer; }
+.grup button[aria-pressed="true"] { background: var(--accent); color: var(--panel); }
+button:focus-visible, .satir:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ipucu { position: absolute; right: 10px; top: 10px; font-size: 12px; color: var(--muted); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; max-width: 46%; }
+aside { display: grid; gap: 12px; min-width: 0; }
+.kart { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: grid; gap: 10px; }
+.kart h2 { font-family: var(--display); font-size: 26px; font-weight: 700; margin: 0; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.kart h2 .m3 { font-family: var(--mono); font-size: 22px; font-weight: 600; }
+.serit { height: 6px; border-radius: 3px; background: var(--c, #888); }
+.taraf { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: 14px; }
+.taraf dt { color: var(--muted); }
+.taraf dd { margin: 0; }
+.olc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.olc div { background: var(--chip); border-radius: 6px; padding: 6px 8px; min-width: 0; }
+.olc b { display: block; font-family: var(--mono); font-weight: 600; font-variant-numeric: tabular-nums; }
+.olc span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.not { font-size: 13px; color: var(--muted); margin: 0; }
+.liste { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.liste h3 { font-family: var(--display); font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: .07em; margin: 0; padding: 10px 14px; border-bottom: 1px solid var(--line); color: var(--muted); }
+.kaydir { max-height: 420px; overflow-y: auto; }
+.satir { display: grid; grid-template-columns: 52px minmax(0, 1fr) 70px; gap: 4px 10px; align-items: center; padding: 7px 14px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.satir:hover { background: var(--chip); }
+.satir.sec { background: var(--chip); box-shadow: inset 3px 0 0 var(--accent); }
+.satir .no { font-family: var(--display); font-weight: 700; }
+.satir .yan { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.satir .bar { grid-column: 2; height: 4px; border-radius: 2px; background: var(--c); }
+.satir .deger { font-family: var(--mono); text-align: right; font-variant-numeric: tabular-nums; grid-row: 1 / span 2; grid-column: 3; }
+.yontem { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 8px; }
+.yontem h3 { font-family: var(--display); font-size: 18px; margin: 0; }
+.yontem p, .yontem li { max-width: 70ch; margin: 0; }
+.yontem ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.formul { font-family: var(--mono); font-size: 13px; background: var(--chip); border-radius: 6px; padding: 8px 10px; overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+
+<div class="sayfa">
+  <header>
+    <div>
+      <h1>135 Ada İstinat Metrajı</h1>
+      <p class="alt">Emirdoğan 135 ada 9-10-11 · 27 evlik site · harçlı moloz taş ağırlık duvarları, duvar duvar</p>
+    </div>
+    <div class="ozet" id="ozet"></div>
+  </header>
+
+  <div class="ana">
+    <div class="sahne" id="sahne">
+      <div class="etiketler" id="etiketler"></div>
+      <div class="lejant" aria-label="Renkler">
+        <b>Duvar yüksekliği</b>
+        <div><i style="background:var(--h1)"></i>1 m altı</div>
+        <div><i style="background:var(--h2)"></i>1–2 m</div>
+        <div><i style="background:var(--h3)"></i>2–3 m</div>
+        <div><i style="background:var(--h4)"></i>3–5 m</div>
+        <div><i style="background:var(--h5)"></i>5 m üstü</div>
+      </div>
+      <div class="ipucu" id="ipucu">Tek parmak döndür, iki parmak yakınlaştır. Bir duvara dokun.</div>
+      <div class="arac">
+        <div class="grup" role="group" aria-label="Zemin"><span>Zemin</span>
+          <button id="z-dolu" data-z="dolu" aria-pressed="true">Dolu</button>
+          <button id="z-seffaf" data-z="seffaf" aria-pressed="false">Şeffaf</button>
+          <button id="z-kapali" data-z="kapali" aria-pressed="false">Kapalı</button>
+        </div>
+        <div class="grup" role="group" aria-label="Etiketler"><span>Etiket</span>
+          <button id="e-buyuk" data-e="buyuk" aria-pressed="true">Büyükler</button>
+          <button id="e-hepsi" data-e="hepsi" aria-pressed="false">Hepsi</button>
+          <button id="e-kapali" data-e="kapali" aria-pressed="false">Kapalı</button>
+        </div>
+        <div class="grup" role="group" aria-label="Görünüm"><span>Bakış</span>
+          <button id="g-genel" data-g="genel">Genel</button>
+          <button id="g-ust" data-g="ust">Üstten</button>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="kart" id="kart"></div>
+      <div class="liste">
+        <h3>Duvarlar · taş hacmine göre</h3>
+        <div class="kaydir" id="liste"></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="yontem">
+    <h3>Metraj nasıl hesaplandı</h3>
+    <ul>
+      <li>Duvarlar teras modelinden geliyor: iki komşu alanın (bahçe, teras, site yolu) bitmiş kotları farklıysa sınırlarına duvar konur. Parsel sınırında dış taraf mevcut arazi kotudur.</li>
+      <li>Yükseklik h = üst taraf bitmiş kotu − alt taraf bitmiş kotu. Duvar boyunca 0,25 m'de bir ölçülür.</li>
+      <li>Kesit: tepe 0,50 m, taban 0,50 + 0,40·h, altında 0,50 m derinlikte ve 0,20 m geniş temel.</li>
+    </ul>
+    <div class="formul">metre başına taş = h·(0,50 + 0,50 + 0,40·h)/2  +  0,50·(0,50 + 0,40·h + 0,20)   [m³/m]</div>
+    <p class="not">Bahçe sınırı ile yol sınırının çakıştığı yerlerde aynı duvar iki kez sayılmıştı (ilk keşifte 2.520 m³). Bu sayfadaki metraj tekrarları ayıklanmış halidir. Temel çukuru kazısı, duvar arkası dolgusu, drenaj ve 0,50 m'den derin temel dahil değildir. 4–5 m'yi aşan duvarlar için statik proje gerekir. Birim fiyat 6.000 TL/m³ varsayımdır.</p>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script src="veri.js"></script>
+<script>
+(function () {
+  const V = window.VERI, FIYAT = 6000;
+  const C = { x: 60, y: 64, z: 124 };
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const SINIF = [[1, '--h1'], [2, '--h2'], [3, '--h3'], [5, '--h4'], [99, '--h5']];
+  const sinifRenk = h => css(SINIF.find(s => h < s[0])[1]);
+  const tr = (v, d = 1) => v.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const W = V.duvar.slice().sort((a, b) => b.m3 - a.m3);
+  const topM3 = W.reduce((s, w) => s + w.m3, 0), topL = W.reduce((s, w) => s + w.L, 0);
+
+  document.getElementById('ozet').innerHTML =
+    `<div><b>${W.length}</b><span>duvar</span></div><div><b>${tr(topL, 0)} m</b><span>uzunluk</span></div>` +
+    `<div><b>${tr(topM3, 0)} m³</b><span>taş</span></div><div><b>≈${tr(topM3 * FIYAT / 1e6, 1)} M TL</b><span>6.000 TL/m³</span></div>`;
+
+  // ---------- sahne
+  const kap = document.getElementById('sahne');
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  kap.prepend(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.5, 2000);
+  camera.up.set(0, 0, 1);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = 0.12; controls.maxPolarAngle = Math.PI * 0.49;
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x7d7262, 0.78));
+  const gunes = new THREE.DirectionalLight(0xffffff, 0.7); gunes.position.set(-60, -80, 120); scene.add(gunes);
+
+  // zemin
+  const Z = V.zemin, renkZ = { 0: new THREE.Color('#c9b78f'), 1: new THREE.Color('#93b464'), 2: new THREE.Color('#a3a39d') };
+  const pos = [], col = [], idx = [];
+  for (let j = 0; j < Z.ny; j++) for (let i = 0; i < Z.nx; i++) {
+    const k = j * Z.nx + i; pos.push(Z.x0 + i * Z.dx - C.x, Z.y0 + j * Z.dy - C.y, Z.z[k] - C.z);
+    const c = renkZ[Z.c[k]] || renkZ[0]; col.push(c.r, c.g, c.b);
+  }
+  for (let j = 0; j < Z.ny - 1; j++) for (let i = 0; i < Z.nx - 1; i++) {
+    const a = j * Z.nx + i, b = a + 1, c = a + Z.nx, d = c + 1;
+    if ([a, b, c, d].some(q => Z.c[q] === '3')) continue;
+    idx.push(a, b, d, a, d, c);
+  }
+  const zg = new THREE.BufferGeometry();
+  zg.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  zg.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+  zg.setIndex(idx); zg.computeVertexNormals();
+  const zMat = new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide, transparent: true, opacity: 1, depthWrite: true });
+  const zemin = new THREE.Mesh(zg, zMat); scene.add(zemin);
+
+  // evler: tas duvar + %33 besik cati
+  const tasM = new THREE.MeshLambertMaterial({ color: 0xbcab92 }), catiM = new THREE.MeshLambertMaterial({ color: 0x3d4045, side: THREE.DoubleSide });
+  V.evler.forEach(e => {
+    let p = e.p.map(q => new THREE.Vector3(q[0] - C.x, q[1] - C.y, 0));
+    if (p[0].distanceTo(p[1]) < p[1].distanceTo(p[2])) p = [p[1], p[2], p[3], p[0]];
+    const z0 = e.z - C.z - 0.3, ze = e.z - C.z + 4.1, kisa = p[1].distanceTo(p[2]), zr = ze + 0.33 * kisa / 2;
+    const at = (v, z) => new THREE.Vector3(v.x, v.y, z);
+    const m12 = p[1].clone().add(p[2]).multiplyScalar(0.5), m30 = p[3].clone().add(p[0]).multiplyScalar(0.5);
+    const tri = [];
+    for (let i = 0; i < 4; i++) { const a = p[i], b = p[(i + 1) % 4]; tri.push(at(a, z0), at(b, z0), at(b, ze), at(a, z0), at(b, ze), at(a, ze)); }
+    tri.push(at(p[1], ze), at(p[2], ze), at(m12, zr), at(p[3], ze), at(p[0], ze), at(m30, zr));
+    const g = new THREE.BufferGeometry().setFromPoints(tri); g.computeVertexNormals();
+    scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: 0xbcab92, side: THREE.DoubleSide })));
+    const r = [at(p[0], ze), at(p[1], ze), at(m12, zr), at(p[0], ze), at(m12, zr), at(m30, zr),
+               at(p[2], ze), at(p[3], ze), at(m30, zr), at(p[2], ze), at(m30, zr), at(m12, zr)];
+    const rg = new THREE.BufferGeometry().setFromPoints(r); rg.computeVertexNormals();
+    scene.add(new THREE.Mesh(rg, catiM));
+  });
+
+  // duvarlar: gercek kesit (govde + 0.50 temel) boyunca supurulur
+  function kesit(px, py, za, zu, ax, ay) {
+    const h = Math.max(zu - za, 0.05); zu = za + h; const b = 0.5 + 0.4 * h;
+    return [[-0.1, za - 0.5], [b + 0.1, za - 0.5], [b + 0.1, za], [b, za], [0.5, zu], [0, zu], [0, za], [-0.1, za]]
+      .map(([s, z]) => new THREE.Vector3(px + ax * s - C.x, py + ay * s - C.y, z - C.z));
+  }
+  const mesler = [];
+  W.forEach(w => {
+    const tri = []; let tepe = null, tepeZ = -1e9;
+    w.runs.forEach(run => {
+      const pts = run.filter((q, i) => i === 0 || Math.hypot(q[0] - run[i - 1][0], q[1] - run[i - 1][1]) > 1e-4);
+      pts.forEach(q => { if (q[3] > tepeZ) { tepeZ = q[3]; } });
+      if (pts.length < 2) return;
+      const S = pts.map(q => kesit(q[0], q[1], q[2], q[3], w.ax, w.ay));
+      for (let k = 0; k < S.length - 1; k++) for (let j = 0; j < 8; j++) {
+        const j2 = (j + 1) % 8, a = S[k], c = S[k + 1]; tri.push(a[j], a[j2], c[j2], a[j], c[j2], c[j]);
+      }
+      [S[0], S[S.length - 1]].forEach(s => { for (let j = 1; j < 7; j++) tri.push(s[0], s[j], s[j + 1]); });
+    });
+    const run = w.runs.reduce((a, b) => (b.length > a.length ? b : a)); const q = run[Math.floor(run.length / 2)];
+    w.capa = new THREE.Vector3(q[0] - C.x, q[1] - C.y, q[3] - C.z + 0.8);
+    w.renk = sinifRenk(w.hmax);
+    if (!tri.length) return;
+    const g = new THREE.BufferGeometry().setFromPoints(tri); g.computeVertexNormals();
+    const m = new THREE.MeshLambertMaterial({ color: new THREE.Color(w.renk), side: THREE.DoubleSide, transparent: true, opacity: 1 });
+    const mesh = new THREE.Mesh(g, m); mesh.userData.w = w; w.mesh = mesh; scene.add(mesh); mesler.push(mesh);
+  });
+
+  // ---------- etiketler
+  const etK = document.getElementById('etiketler');
+  W.forEach(w => {
+    const d = document.createElement('div'); d.className = 'et'; d.style.setProperty('--c', w.renk);
+    d.innerHTML = `${w.no}<small>${tr(w.m3)} m³</small>`; d.hidden = true; etK.appendChild(d); w.el = d;
+  });
+  let etMod = 'buyuk', secili = null;
+  const v3 = new THREE.Vector3();
+  function etiketleriYerlestir() {
+    const r = kap.getBoundingClientRect(), dolu = [];
+    W.forEach(w => {
+      const goster = w === secili || etMod === 'hepsi' || (etMod === 'buyuk' && w.m3 >= 20);
+      if (!goster) { w.el.hidden = true; return; }
+      v3.copy(w.capa).project(camera);
+      if (v3.z > 1 || Math.abs(v3.x) > 1.05 || Math.abs(v3.y) > 1.05) { w.el.hidden = true; return; }
+      const x = (v3.x + 1) / 2 * r.width, y = (1 - v3.y) / 2 * r.height;
+      const bw = w.el.offsetWidth || 90, bh = 22, kutu = [x - bw / 2, y - bh, x + bw / 2, y];
+      if (w !== secili && dolu.some(b => !(kutu[2] < b[0] || kutu[0] > b[2] || kutu[3] < b[1] || kutu[1] > b[3]))) { w.el.hidden = true; return; }
+      dolu.push(kutu); w.el.hidden = false; w.el.style.left = x + 'px'; w.el.style.top = y + 'px';
+      w.el.classList.toggle('sec', w === secili);
+    });
+  }
+
+  // ---------- kart ve liste
+  const kart = document.getElementById('kart'), liste = document.getElementById('liste');
+  function kartYaz(w) {
+    kart.innerHTML = `
+      <h2>${w.no} <span class="m3">${tr(w.m3)} m³</span></h2>
+      <div class="serit" style="--c:${w.renk}"></div>
+      <dl class="taraf"><dt>Üst taraf</dt><dd>${w.ust}</dd><dt>Alt taraf</dt><dd>${w.alt}</dd></dl>
+      <div class="olc">
+        <div><span>Uzunluk</span><b>${tr(w.L)} m</b></div>
+        <div><span>h ort.</span><b>${tr(w.hort, 2)} m</b></div>
+        <div><span>h maks</span><b>${tr(w.hmax, 2)} m</b></div>
+        <div><span>Taban</span><b>${tr(0.5 + 0.4 * w.hort, 2)} m</b></div>
+        <div><span>Ön yüz</span><b>${tr(w.L * w.hort)} m²</b></div>
+        <div><span>Tutar</span><b>${tr(w.m3 * FIYAT / 1000, 0)} bin TL</b></div>
+      </div>
+      <p class="not">Toplam taşın %${tr(w.m3 / topM3 * 100)}'i. Hacim gövde + temeldir; yükseklik duvar boyunca 0,25 m'de bir ölçülüp toplanmıştır.</p>`;
+  }
+  W.forEach(w => {
+    const s = document.createElement('div'); s.className = 'satir'; s.tabIndex = 0; s.style.setProperty('--c', w.renk);
+    s.innerHTML = `<span class="no">${w.no}</span><span class="yan">${w.ust} → ${w.alt} · h ${tr(w.hmax)} m</span><span class="deger">${tr(w.m3)}</span><span class="bar" style="width:${Math.max(2, w.m3 / W[0].m3 * 100)}%"></span>`;
+    s.addEventListener('click', () => sec(w, true));
+    s.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); sec(w, true); } });
+    liste.appendChild(s); w.satir = s;
+  });
+
+  function sec(w, git) {
+    secili = w;
+    mesler.forEach(m => { m.material.opacity = (m.userData.w === w) ? 1 : 0.55; m.material.emissive && m.material.emissive.set(m.userData.w === w ? 0x2a2a2a : 0x000000); });
+    W.forEach(x => x.satir.classList.toggle('sec', x === w));
+    kartYaz(w);
+    if (git) { uc(w); w.satir.scrollIntoView({ block: 'nearest' }); }
+    ciz();
+  }
+
+  // ---------- kamera
+  let anim = null;
+  function uc(w) {
+    const hedef = new THREE.Vector3(w.cx - C.x, w.cy - C.y, w.capa.z - 2);
+    const yon = camera.position.clone().sub(controls.target).normalize();
+    const mesafe = Math.max(18, Math.min(45, w.L * 1.6 + 14));
+    animasyon(hedef, hedef.clone().add(yon.multiplyScalar(mesafe)));
+  }
+  function animasyon(hedef, konum) {
+    const t0 = performance.now(), a0 = controls.target.clone(), p0 = camera.position.clone();
+    const sure = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 650;
+    anim = t => { const k = sure ? Math.min(1, (t - t0) / sure) : 1, e = k * k * (3 - 2 * k);
+      controls.target.lerpVectors(a0, hedef, e); camera.position.lerpVectors(p0, konum, e); if (k >= 1) anim = null; };
+    ciz();
+  }
+  const uzak = () => Math.min(2.1, Math.max(1, 1.25 / camera.aspect));
+  const bakis = {
+    genel: () => animasyon(new THREE.Vector3(0, 0, -2), new THREE.Vector3(-14, -105, 85).multiplyScalar(uzak())),
+    ust: () => animasyon(new THREE.Vector3(0, 0, -2), new THREE.Vector3(0, -2, 165 * uzak())),
+  };
+
+  // ---------- secim (dokunma)
+  const ray = new THREE.Raycaster(), fare = new THREE.Vector2(); let bas = null;
+  renderer.domElement.addEventListener('pointerdown', e => { bas = [e.clientX, e.clientY]; });
+  renderer.domElement.addEventListener('pointerup', e => {
+    if (!bas || Math.hypot(e.clientX - bas[0], e.clientY - bas[1]) > 6) return;
+    const r = renderer.domElement.getBoundingClientRect();
+    fare.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+    ray.setFromCamera(fare, camera);
+    const hit = ray.intersectObjects(mesler)[0];
+    if (hit) { sec(hit.object.userData.w, false); hit.object.userData.w.satir.scrollIntoView({ block: 'nearest' }); }
+  });
+
+  // ---------- butonlar
+  function bas2(grup, btn) { grup.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b === btn))); }
+  document.querySelectorAll('[data-z]').forEach(b => b.addEventListener('click', () => {
+    bas2(b.parentNode, b); const m = b.dataset.z;
+    zemin.visible = m !== 'kapali'; zMat.opacity = m === 'seffaf' ? 0.32 : 1; zMat.depthWrite = m === 'dolu'; zMat.needsUpdate = true; ciz();
+  }));
+  document.querySelectorAll('[data-e]').forEach(b => b.addEventListener('click', () => { bas2(b.parentNode, b); etMod = b.dataset.e; ciz(); }));
+  document.querySelectorAll('[data-g]').forEach(b => b.addEventListener('click', () => bakis[b.dataset.g]()));
+
+  // ---------- tema ve boyut
+  function tema() { scene.background = new THREE.Color(css('--scene') || '#dfe4dc'); ciz(); }
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', tema);
+  new MutationObserver(tema).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  function boyut() { const r = kap.getBoundingClientRect(); renderer.setSize(r.width, r.height, false); camera.aspect = r.width / Math.max(1, r.height); camera.updateProjectionMatrix(); ciz(); }
+  new ResizeObserver(boyut).observe(kap);
+
+  let istek = false;
+  function ciz() { if (!istek) { istek = true; requestAnimationFrame(kare); } }
+  function kare(t) {
+    istek = false;
+    if (anim) anim(t);
+    const degisti = controls.update();
+    renderer.render(scene, camera); etiketleriYerlestir();
+    if (anim || degisti) ciz();
+  }
+  controls.addEventListener('change', ciz);
+  ['pointerdown', 'wheel', 'touchstart'].forEach(ev => renderer.domElement.addEventListener(ev, () => { document.getElementById('ipucu').hidden = true; }, { passive: true }));
+
+  tema(); boyut();
+  camera.position.set(-14, -105, 85).multiplyScalar(uzak()); controls.target.set(0, 0, -2);
+  sec(W[0], false);
+})();
+</script>
+
+</body>
+</html>
